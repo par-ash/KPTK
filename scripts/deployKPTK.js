@@ -6,7 +6,7 @@ async function main() {
     console.log("Account balance:", (await deployer.getBalance()).toString());
 
     const KPTK = await ethers.getContractFactory("KPTK");
-    const token = await KPTK.deploy();
+    const token = await KPTK.deploy(deployer.address);
 
     console.log("KPTK token address:", token.address);
 }
@@ -17,3 +17,6 @@ main()
         console.error(error);
         process.exit(1);
     });
+
+
+    // npx hardhat run ./scripts/deployKPTK.js --network goerli
